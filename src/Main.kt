@@ -92,6 +92,8 @@ class Game(width: Int, height: Int) {
             if (field[i][j] == currentTurn.ordinal + 1) {
                 cnt++
             }
+            if (field[i][j] == 0 || field[i][j] != currentTurn.ordinal + 1)
+                return cnt
             i += iInc
             j += jInc
         }
