@@ -49,10 +49,8 @@ fun <E> createMatrix(height: Int, width: Int, e: E): Matrix<E> {
  */
 
 @Suppress("EqualsOrHashCode")
-class MatrixImpl<E>(height: Int, width: Int, e: E) : Matrix<E> {
+class MatrixImpl<E>(override val height: Int, override val width: Int, e: E) : Matrix<E> {
 
-    override val height: Int = height
-    override val width: Int = width
     private val values: MutableList<E> = MutableList(height * width) {e}
 
     override fun get(row: Int, column: Int): E {
@@ -91,14 +89,14 @@ class MatrixImpl<E>(height: Int, width: Int, e: E) : Matrix<E> {
         values[pos] = value
     }
 
-    override fun equals(other: Any?) : Boolean{
-        if (this.toString() != other.toString())
-            return false
+    override fun equals(other: Any?) : Boolean {
+        if (other != null && other is MatrixImpl<*>) {
+            if (this.width != other.width || this.height != other.height)
+                return false
+            if (this.values != other.values)
+                return false
+        }
         return true
-        /*if (other != null &&
-            other.javaClass.kotlin.qualifiedName == this.javaClass.kotlin.qualifiedName) {
-
-        }*/
     }
 
     override fun toString(): String {
