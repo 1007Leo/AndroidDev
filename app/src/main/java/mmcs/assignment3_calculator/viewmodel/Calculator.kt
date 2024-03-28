@@ -8,6 +8,8 @@ interface Calculator {
 
     // Observable display, should be referenced in layout
     var display: ObservableField<String>
+    var secondaryDisplay: ObservableField<String>
+    var operation: ObservableField<String>
 
     // Add new digit to current input and update display
     fun addDigit(dig: Int)
@@ -27,5 +29,5 @@ interface Calculator {
     fun clear()
 
     // Clear entire calculator state
-    fun reset()
+    fun reset() : Boolean
 }

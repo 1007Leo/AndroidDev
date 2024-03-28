@@ -15,5 +15,409 @@
         android:layout_height="match_parent"
         tools:context=".view.MainActivity">
 
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:orientation="vertical"
+            android:weightSum="1"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="0.15">
+
+                <TextView
+                    android:id="@+id/output"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center|end"
+
+                    android:text="@{viewModel.secondaryDisplay}"
+                    android:autoSizeTextType="uniform"
+                    android:autoSizeMinTextSize="12sp"
+                    android:autoSizeMaxTextSize="50sp"
+                    android:autoSizeStepGranularity="2sp"
+                    tools:text="-345.057" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="0.15">
+
+                <TextView
+                    android:id="@+id/operation"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginEnd="15dp"
+                    android:gravity="center|end"
+
+                    android:text="@{viewModel.operation}"
+                    android:autoSizeTextType="uniform"
+                    android:autoSizeMinTextSize="12sp"
+                    android:autoSizeMaxTextSize="90sp"
+                    android:autoSizeStepGranularity="2sp"
+                    tools:text="+" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="0.2">
+
+                <TextView
+                    android:id="@+id/Input"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center|end"
+                    android:singleLine="true"
+
+                    android:text="@{viewModel.display}"
+                    android:autoSizeTextType="uniform"
+                    android:autoSizeMinTextSize="12sp"
+                    android:autoSizeMaxTextSize="90sp"
+                    android:autoSizeStepGranularity="2sp"
+                    tools:text="0.0034" />
+            </TableRow>
+
+            <TableLayout
+                android:id="@+id/tableLayout"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="0.5">
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:background="@color/purple_700" />
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="0.25"
+                    android:orientation="vertical">
+
+                    <Button
+                        android:id="@+id/button7"
+                        style="?android:attr/buttonBarButtonStyle"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.2"
+                        android:insetTop="0dp"
+                        android:insetBottom="0dp"
+
+                        android:text="@string/_7"
+                        android:autoSizeTextType="uniform"
+                        android:autoSizeMinTextSize="12sp"
+                        android:autoSizeMaxTextSize="50sp"
+                        android:autoSizeStepGranularity="2sp"
+                        app:cornerRadius="@null" />
+
+                    <Button
+                        android:id="@+id/button8"
+                        style="?android:attr/buttonBarButtonStyle"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.2"
+                        android:insetTop="0dp"
+                        android:insetBottom="0dp"
+
+                        android:text="@string/_8"
+                        android:autoSizeTextType="uniform"
+                        android:autoSizeMinTextSize="12sp"
+                        android:autoSizeMaxTextSize="50sp"
+                        android:autoSizeStepGranularity="2sp" />
+
+                    <Button
+                        android:id="@+id/button9"
+                        style="?android:attr/buttonBarButtonStyle"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.2"
+                        android:insetTop="0dp"
+                        android:insetBottom="0dp"
+
+                        android:text="@string/_9"
+                        android:autoSizeTextType="uniform"
+                        android:autoSizeMinTextSize="12sp"
+                        android:autoSizeMaxTextSize="50sp"
+                        android:autoSizeStepGranularity="2sp" />
+
+                    <View
+                        android:layout_width="2dp"
+                        android:layout_height="match_parent"
+                        android:background="@color/purple_700" />
+
+                    <Button
+                        android:id="@+id/buttonDivide"
+                        style="?android:attr/buttonBarButtonStyle"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.2"
+                        android:insetTop="0dp"
+                        android:insetBottom="0dp"
+
+                        android:text="@string/divideSymbol"
+                        android:autoSizeTextType="uniform"
+                        android:autoSizeMinTextSize="12sp"
+                        android:autoSizeMaxTextSize="50sp"
+                        android:autoSizeStepGranularity="2sp" />
+
+                    <Button
+                        android:id="@+id/buttonDelete"
+                        style="?android:attr/buttonBarButtonStyle"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.2"
+                        android:insetTop="0dp"
+                        android:insetBottom="0dp"
+
+                        android:text="@string/backspaceSymbol"
+                        android:autoSizeTextType="uniform"
+                        android:autoSizeMinTextSize="12sp"
+                        android:autoSizeMaxTextSize="50sp"
+                        android:autoSizeStepGranularity="2sp" />
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="0.25"
+                    android:orientation="vertical">
+
+                    <Button
+                        android:id="@+id/button4"
+                        style="?android:attr/buttonBarButtonStyle"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.2"
+                        android:insetTop="0dp"
+                        android:insetBottom="0dp"
+
+                        android:text="@string/_4"
+                        android:autoSizeTextType="uniform"
+                        android:autoSizeMinTextSize="12sp"
+                        android:autoSizeMaxTextSize="50sp"
+                        android:autoSizeStepGranularity="2sp" />
+
+                    <Button
+                        android:id="@+id/button5"
+                        style="?android:attr/buttonBarButtonStyle"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.2"
+                        android:insetTop="0dp"
+                        android:insetBottom="0dp"
+
+                        android:text="@string/_5"
+                        android:autoSizeTextType="uniform"
+                        android:autoSizeMinTextSize="12sp"
+                        android:autoSizeMaxTextSize="50sp"
+                        android:autoSizeStepGranularity="2sp" />
+
+                    <Button
+                        android:id="@+id/button6"
+                        style="?android:attr/buttonBarButtonStyle"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.2"
+                        android:insetTop="0dp"
+                        android:insetBottom="0dp"
+
+                        android:text="@string/_6"
+                        android:autoSizeTextType="uniform"
+                        android:autoSizeMinTextSize="12sp"
+                        android:autoSizeMaxTextSize="50sp"
+                        android:autoSizeStepGranularity="2sp" />
+
+                    <View
+                        android:layout_width="2dp"
+                        android:layout_height="match_parent"
+                        android:background="@color/purple_700" />
+
+                    <Button
+                        android:id="@+id/buttonMultiply"
+                        style="?android:attr/buttonBarButtonStyle"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.2"
+                        android:insetTop="0dp"
+                        android:insetBottom="0dp"
+
+                        android:text="@string/multiplySymbol"
+                        android:autoSizeTextType="uniform"
+                        android:autoSizeMinTextSize="12sp"
+                        android:autoSizeMaxTextSize="50sp"
+                        android:autoSizeStepGranularity="2sp" />
+
+                    <Space
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.2" />
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="0.25"
+                    android:orientation="vertical">
+
+                    <Button
+                        android:id="@+id/button1"
+                        style="?android:attr/buttonBarButtonStyle"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.2"
+                        android:insetTop="0dp"
+                        android:insetBottom="0dp"
+
+                        android:text="@string/_1"
+                        android:autoSizeTextType="uniform"
+                        android:autoSizeMinTextSize="12sp"
+                        android:autoSizeMaxTextSize="50sp"
+                        android:autoSizeStepGranularity="2sp" />
+
+                    <Button
+                        android:id="@+id/button2"
+                        style="?android:attr/buttonBarButtonStyle"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.2"
+                        android:insetTop="0dp"
+                        android:insetBottom="0dp"
+
+                        android:text="@string/_2"
+                        android:autoSizeTextType="uniform"
+                        android:autoSizeMinTextSize="12sp"
+                        android:autoSizeMaxTextSize="50sp"
+                        android:autoSizeStepGranularity="2sp" />
+
+                    <Button
+                        android:id="@+id/button3"
+                        style="?android:attr/buttonBarButtonStyle"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.2"
+                        android:insetTop="0dp"
+                        android:insetBottom="0dp"
+
+                        android:text="@string/_3"
+                        android:autoSizeTextType="uniform"
+                        android:autoSizeMinTextSize="12sp"
+                        android:autoSizeMaxTextSize="50sp"
+                        android:autoSizeStepGranularity="2sp" />
+
+                    <View
+                        android:layout_width="2dp"
+                        android:layout_height="match_parent"
+                        android:background="@color/purple_700" />
+
+                    <Button
+                        android:id="@+id/buttonMinus"
+                        style="?android:attr/buttonBarButtonStyle"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.2"
+                        android:insetTop="0dp"
+                        android:insetBottom="0dp"
+
+                        android:text="@string/minusSymbol"
+                        android:autoSizeTextType="uniform"
+                        android:autoSizeMinTextSize="12sp"
+                        android:autoSizeMaxTextSize="50sp"
+                        android:autoSizeStepGranularity="2sp" />
+
+                    <Space
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.2" />
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="0.25"
+                    android:orientation="vertical">
+
+                    <Button
+                        android:id="@+id/button0"
+                        style="?android:attr/buttonBarButtonStyle"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.2"
+                        android:insetTop="0dp"
+                        android:insetBottom="0dp"
+
+                        android:text="@string/_0"
+                        android:autoSizeTextType="uniform"
+                        android:autoSizeMinTextSize="12sp"
+                        android:autoSizeMaxTextSize="50sp"
+                        android:autoSizeStepGranularity="2sp" />
+
+                    <Button
+                        android:id="@+id/buttonDot"
+                        style="?android:attr/buttonBarButtonStyle"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.2"
+                        android:insetTop="0dp"
+                        android:insetBottom="0dp"
+
+                        android:text="@string/dotSymbol"
+                        android:autoSizeTextType="uniform"
+                        android:autoSizeMinTextSize="12sp"
+                        android:autoSizeMaxTextSize="50sp"
+                        android:autoSizeStepGranularity="2sp" />
+
+                    <Space
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.2" />
+
+                    <View
+                        android:layout_width="2dp"
+                        android:layout_height="match_parent"
+                        android:background="@color/purple_700" />
+
+                    <Button
+                        android:id="@+id/buttonPlus"
+                        style="?android:attr/buttonBarButtonStyle"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.2"
+                        android:insetTop="0dp"
+                        android:insetBottom="0dp"
+
+                        android:text="@string/plusSymbol"
+                        android:autoSizeTextType="uniform"
+                        android:autoSizeMinTextSize="12sp"
+                        android:autoSizeMaxTextSize="50sp"
+                        android:autoSizeStepGranularity="2sp" />
+
+                    <Button
+                        android:id="@+id/buttonEquals"
+                        style="?android:attr/buttonBarButtonStyle"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.2"
+                        android:insetTop="0dp"
+                        android:insetBottom="0dp"
+
+                        android:text="@string/equalsSymbol"
+                        android:autoSizeTextType="uniform"
+                        android:autoSizeMinTextSize="12sp"
+                        android:autoSizeMaxTextSize="50sp"
+                        android:autoSizeStepGranularity="2sp" />
+
+                </TableRow>
+
+            </TableLayout>
+        </LinearLayout>
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
