@@ -1,11 +1,11 @@
 package com.mmcs.todolist
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -65,6 +65,12 @@ class StartFragment : Fragment()
         view.findViewById<Button>(R.id.add).setOnClickListener{
             navController.navigate(R.id.newNodeFragment)
         }
+    }
+
+    override fun onStart() {
+        super.onStart()
+
+        activity?.setTitle("Tasks")
     }
 
     companion object {

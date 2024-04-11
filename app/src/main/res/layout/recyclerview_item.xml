@@ -22,8 +22,8 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:checked="false"
-            android:scaleX="1.5"
-            android:scaleY="1.5"/>
+            android:scaleX="1.2"
+            android:scaleY="1.2"/>
 
         <TextView
             android:id="@+id/nodeName"
@@ -31,7 +31,8 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:textAllCaps="false"
-            android:textSize="35sp"
+            android:textSize="28sp"
+            android:layout_gravity="center_vertical"
             tools:text="Demo" />
 
         <Button

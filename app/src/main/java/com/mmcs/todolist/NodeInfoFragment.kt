@@ -47,6 +47,12 @@ class NodeInfoFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         view.findViewById<TextView>(R.id.nameText).text = sharedData.Tasks.elementAt(sharedData.adapterPosition).name
+        view.findViewById<TextView>(R.id.DescriptionText).text = sharedData.Tasks.elementAt(sharedData.adapterPosition).description
+    }
+
+    override fun onStart() {
+        super.onStart()
+        activity?.setTitle("Description")
     }
 
     companion object {

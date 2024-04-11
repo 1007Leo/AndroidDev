@@ -1,5 +1,6 @@
 package com.mmcs.todolist.recycler
 
+import android.graphics.Paint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -21,10 +22,24 @@ class MainRecyclerAdapter(private val data: ToDoListViewModel):
             data.removeTask(adapterPosition)
             notifyItemRemoved(adapterPosition)
         }
-        val showInfoListener = itemView.findViewById<TextView>(R.id.nodeName).setOnClickListener {
+        val showInfoListener = largeTextView.setOnClickListener {
             val navController = itemView.findNavController()
             data.adapterPosition = adapterPosition
             navController.navigate(R.id.nodeInfoFragment)
+        }
+        val checkboxListener = completedCheckBox.setOnClickListener {
+            if (completedCheckBox.isChecked) {
+                data.setCompletedState(adapterPosition, true)
+                largeTextView.apply {
+                    paintFlags = paintFlags or Paint.STRIKE_THRU_TEXT_FLAG
+                }
+            }
+            else {
+                data.setCompletedState(adapterPosition, false)
+                largeTextView.apply {
+                    paintFlags = paintFlags and Paint.STRIKE_THRU_TEXT_FLAG.inv()
+                }
+            }
         }
     }
 
@@ -40,10 +55,15 @@ class MainRecyclerAdapter(private val data: ToDoListViewModel):
     }
 
     override fun onBindViewHolder(holder: MainViewHolder, position: Int) {
+        holder.completedCheckBox.isChecked = data.getTask(position).completed
         if (holder.completedCheckBox.isChecked)
-            data.setCompletedState(position, true)
+            holder.largeTextView.apply {
+                paintFlags = paintFlags or Paint.STRIKE_THRU_TEXT_FLAG
+            }
         else
-            data.setCompletedState(position, false)
+            holder.largeTextView.apply {
+                paintFlags = paintFlags and Paint.STRIKE_THRU_TEXT_FLAG.inv()
+            }
 
         holder.largeTextView.text = data.getTask(position).name
     }

@@ -54,12 +54,17 @@ class NewNodeFragment : Fragment() {
             val name = view.findViewById<TextInputLayout>(R.id.NameInputField).editText?.text.toString()
             val description = view.findViewById<TextInputLayout>(R.id.DescriptionInputField).editText?.text.toString()
             sharedData.addTask(Node(name, description, false))
-            navController.navigate(R.id.startFragment)
+            navController.popBackStack()
         }
 
         view.findViewById<Button>(R.id.CancelAddButton).setOnClickListener {
-            navController.navigate(R.id.startFragment)
+            navController.popBackStack()
         }
+    }
+
+    override fun onStart() {
+        super.onStart()
+        activity?.setTitle("New task")
     }
 
     companion object {
