@@ -1,7 +1,7 @@
 package com.mmcs.todolist.viewmodel
 
 interface ToDoList<T> {
-    val Tasks: MutableList<T>
+    //val Tasks: MutableList<T>
 
     fun addTask(data: T)
 

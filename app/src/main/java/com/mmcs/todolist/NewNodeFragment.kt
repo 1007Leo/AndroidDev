@@ -9,7 +9,9 @@ import android.widget.Button
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.findNavController
 import com.google.android.material.textfield.TextInputLayout
-import com.mmcs.todolist.viewmodel.Node
+import com.mmcs.todolist.database.GlobalDBApplication
+import com.mmcs.todolist.database.TaskModel
+import com.mmcs.todolist.database.ViewModelFactory
 import com.mmcs.todolist.viewmodel.ToDoListViewModel
 
 // TODO: Rename parameter arguments, choose names that match
@@ -27,7 +29,10 @@ class NewNodeFragment : Fragment() {
     private var param1: String? = null
     private var param2: String? = null
 
-    private val sharedData: ToDoListViewModel by activityViewModels()
+    private lateinit var dbApp: GlobalDBApplication
+    private val sharedData: ToDoListViewModel by activityViewModels {
+        ViewModelFactory(dbApp.getDB().dao)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,6 +40,7 @@ class NewNodeFragment : Fragment() {
             param1 = it.getString(ARG_PARAM1)
             param2 = it.getString(ARG_PARAM2)
         }
+        dbApp = context?.applicationContext as GlobalDBApplication
     }
 
     override fun onCreateView(
@@ -53,7 +59,7 @@ class NewNodeFragment : Fragment() {
         view.findViewById<Button>(R.id.OKAddButton).setOnClickListener {
             val name = view.findViewById<TextInputLayout>(R.id.NameInputField).editText?.text.toString()
             val description = view.findViewById<TextInputLayout>(R.id.DescriptionInputField).editText?.text.toString()
-            sharedData.addTask(Node(name, description, false))
+            sharedData.addTask(TaskModel(name, description, false))
             navController.popBackStack()
         }
 

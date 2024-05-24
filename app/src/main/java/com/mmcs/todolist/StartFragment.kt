@@ -10,6 +10,8 @@ import androidx.fragment.app.activityViewModels
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.mmcs.todolist.database.GlobalDBApplication
+import com.mmcs.todolist.database.ViewModelFactory
 import com.mmcs.todolist.recycler.MainRecyclerAdapter
 import com.mmcs.todolist.viewmodel.ToDoListViewModel
 
@@ -30,7 +32,10 @@ class StartFragment : Fragment()
     private var param1: String? = null
     private var param2: String? = null
 
-    private val sharedData: ToDoListViewModel by activityViewModels()
+    private lateinit var dbApp: GlobalDBApplication
+    private val sharedData: ToDoListViewModel by activityViewModels{
+        ViewModelFactory(dbApp.getDB().dao)
+    }
     private lateinit var adapter: MainRecyclerAdapter
 
 
@@ -40,6 +45,7 @@ class StartFragment : Fragment()
             param1 = it.getString(ARG_PARAM1)
             param2 = it.getString(ARG_PARAM2)
         }
+        dbApp = context?.applicationContext as GlobalDBApplication
     }
 
     override fun onCreateView(

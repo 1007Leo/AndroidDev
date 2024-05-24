@@ -23,8 +23,8 @@ class MainRecyclerAdapter(private val data: ToDoListViewModel):
             notifyItemRemoved(adapterPosition)
         }
         val showInfoListener = largeTextView.setOnClickListener {
-            val navController = itemView.findNavController()
             data.adapterPosition = adapterPosition
+            val navController = itemView.findNavController()
             navController.navigate(R.id.nodeInfoFragment)
         }
         val checkboxListener = completedCheckBox.setOnClickListener {
@@ -51,7 +51,7 @@ class MainRecyclerAdapter(private val data: ToDoListViewModel):
     }
 
     override fun getItemCount(): Int {
-        return data.getAllTasks().size
+        return data.getTasksCount()
     }
 
     override fun onBindViewHolder(holder: MainViewHolder, position: Int) {

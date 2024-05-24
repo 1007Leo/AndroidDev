@@ -7,6 +7,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.activityViewModels
+import com.mmcs.todolist.database.GlobalDBApplication
+import com.mmcs.todolist.database.ViewModelFactory
 import com.mmcs.todolist.viewmodel.ToDoListViewModel
 
 // TODO: Rename parameter arguments, choose names that match
@@ -24,7 +26,10 @@ class NodeInfoFragment : Fragment() {
     private var param1: String? = null
     private var param2: String? = null
 
-    private val sharedData: ToDoListViewModel by activityViewModels()
+    private lateinit var dbApp: GlobalDBApplication
+    private val sharedData: ToDoListViewModel by activityViewModels {
+        ViewModelFactory(dbApp.getDB().dao)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,6 +37,7 @@ class NodeInfoFragment : Fragment() {
             param1 = it.getString(ARG_PARAM1)
             param2 = it.getString(ARG_PARAM2)
         }
+        dbApp = context?.applicationContext as GlobalDBApplication
     }
 
     override fun onCreateView(
@@ -46,8 +52,8 @@ class NodeInfoFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        view.findViewById<TextView>(R.id.nameText).text = sharedData.Tasks.elementAt(sharedData.adapterPosition).name
-        view.findViewById<TextView>(R.id.DescriptionText).text = sharedData.Tasks.elementAt(sharedData.adapterPosition).description
+        view.findViewById<TextView>(R.id.nameText).text = sharedData.getTask(sharedData.adapterPosition).name
+        view.findViewById<TextView>(R.id.DescriptionText).text = sharedData.getTask(sharedData.adapterPosition).description
     }
 
     override fun onStart() {
